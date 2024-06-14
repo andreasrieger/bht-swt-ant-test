@@ -19,11 +19,17 @@ public class Calculator {
 		System.out.print("The sum of " + a + " and " + b + " is " + add(a, b) + ".");
 
 	}
-	
-	public static int add(int a, int b) {
-		return a+b;
-	}
-	
+
+	/* performing an addition between two integers */
+	public int add(int a, int b) {return a+b;}
+
+	/* subtracting one integers from another one */
+	public int min(int a, int b) { return a-b; }
+
+	/* performing a multiplication between two integers */
+	public int mul(int a, int b) { return a*b; }
+
+	/* deviding one integer by another one */
 	public int div(int a, int b) {
 		return a/b;
 	}
