@@ -16,3 +16,4 @@ This project is for testing build management with Apache Ant and version control
 11. Pushed local changes to remote repository. ![git commit & push](https://github.com/andreasrieger/bht-swt-ant-test/blob/main/img/2024-06-14-git-commit-push.png)
 12. Pulled changes from origin: ![git pull](https://github.com/andreasrieger/bht-swt-ant-test/blob/main/img/2024-06-14-git-pull.png)
 13. Removed file from local clone.
+14. Removed file from origin.
