@@ -17,3 +17,5 @@ This project is for testing build management with Apache Ant and version control
 12. Pulled changes from origin: ![git pull](https://github.com/andreasrieger/bht-swt-ant-test/blob/main/img/2024-06-14-git-pull.png)
 13. Removed file from local clone.
 14. Removed file from origin.
+
+This is some useless text.
