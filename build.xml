@@ -1,72 +1,70 @@
 <project name="bht-swt-ant-test" default="run" basedir=".">
-	
+
 	<description>
 		Testing ant to build java projects
 	</description>
-	
+
 	<!-- global properties -->
 	<property name="src" value="src"/>
 	<property name="build" value="build"/>
 	<property name="dist" value="dist"/>
 	<property name="doc" value="doc"/>
-	
+
 	<!-- path variable -->
-    <path id="test.classpath">
-        <pathelement path="${build}"/>
-        <fileset dir="${ant.home}/lib" includes="*.jar"/>
-    </path>
+	<path id="test.classpath">
+		<pathelement path="${build}"/>
+		<fileset dir="${ant.home}/lib" includes="*.jar"/>
+	</path>
 	
-	
-    <!-- cleaning the project structure -->
-	<target name="clean">
+	<!-- cleaning the project structure -->
+	<target name="clean" description="cleaning the work bench">
 		<delete dir="${build}"/>
 		<delete dir="${doc}"/>
 	</target>
-	
-	
+
+
 	<!-- creating project structure -->
-	<target name="init" depends="clean">
-		<!-- getting a timestamp --> 
+	<target name="init" depends="clean" description="initializing build structure">
+		<!-- getting a timestamp -->
 		<tstamp/>
 		<!-- creating build directory -->
 		<mkdir dir="${build}"/>
 	</target>
-	
-	
+
+
 	<!-- compiling the sources -->
-	<target name="compile" depends="init" description="compile source">	
+	<target name="compile" depends="init" description="compiling source">
 		<javac includeantruntime="false" srcdir="${src}" destdir="${build}"/>
 	</target>
-	
-	
+
+
 	<!-- creating a distribution -->
-	<target name="dist" depends="compile" description="creating a distribution file">
+	<target name="dist" depends="compile" description="creating distribution file">
 		<!-- creating distribution directory -->
 		<mkdir dir="${dist}/lib"/>
 		<!-- moving built files to .jar file in dist dir -->
-		<jar jarfile="${dist}/lib/ant-test-${DSTAMP}.jar" basedir="${build}" excludes="**/*Test.class"/>
+		<jar jarfile="${dist}/lib/ant-text-${DSTAMP}.jar" basedir="${build}" excludes="**/*Test.class"/>
 	</target>
-	
+
 
 	<!-- creating a documentation -->
-	<target name="javadoc" depends="dist">
-	   	<javadoc packagenames="calc.*" sourcepath="${src}"
-	      destdir="${doc}" version="true" windowtitle="Anting">
-	      <doctitle><![CDATA[= Calculator =]]></doctitle>
-	      <bottom>
-	         <![CDATA[Copyright © 2024. All Rights Reserved.]]>
-	      </bottom>
-	      <group title="packages" packages="calc.*"/>
-	   	</javadoc>
-	   	<echo message="java doc has been generated!"/>
+	<target name="javadoc" depends="dist" description="creating java doc">
+		<javadoc packagenames="calc.*" sourcepath="${src}"
+				 destdir="${doc}" version="true" windowtitle="BHT SWT Ant Test">
+			<doctitle><![CDATA[= Calculator =]]></doctitle>
+			<bottom>
+				<![CDATA[Copyright © 2024. All Rights Reserved.]]>
+			</bottom>
+			<group title="packages" packages="calc.*"/>
+		</javadoc>
+		<echo message="java doc has been generated!"/>
 	</target>
-	
-	
+
+
 	<!-- running the main class -->
 	<target name="run" depends="javadoc" description="running main class">
 		<echo message="running the main class..."/>
 		<java classpathref="test.classpath" classname="calc.Calculator" fork="true" failonerror="yes"/>
 	</target>
 
-	
 </project>
